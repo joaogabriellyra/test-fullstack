@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const MainContainer = styled.main`
-  max-width: 80%;
+  max-width: 70%;
   margin: 0 auto;
   padding: 5rem;
   display: flex;

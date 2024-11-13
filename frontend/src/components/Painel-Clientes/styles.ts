@@ -6,7 +6,8 @@ export const PainelClientesContainer = styled.div`
   gap: 1rem;
 
   h1 {
-    color: #6b7280;
+    color: #27272a
+    ;
   }
   
 `
