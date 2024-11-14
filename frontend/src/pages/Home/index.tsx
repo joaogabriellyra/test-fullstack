@@ -1,3 +1,4 @@
+import { InfoWithButtonNewCustomer } from '../../components/InfoWithButtonNewCustomer'
 import { usuarios } from './mock-users'
 import {
   CpfAndCellphoneContainer,
@@ -19,6 +20,7 @@ function whatIsTheStatusColor(statusCadastro: string) {
 export function Home() {
   return (
     <>
+      <InfoWithButtonNewCustomer />
       <TableContainer>
         <Table>
           <tbody>
@@ -39,7 +41,7 @@ export function Home() {
                     </CpfAndCellphoneContainer>
                   </td>
                   <td>
-                    <StatusIndicator statusColor={statusIndicatorColor}>
+                    <StatusIndicator $statusColor={statusIndicatorColor}>
                       {statusCadastro}
                     </StatusIndicator>
                   </td>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import {
   CustomerContainer,
   LookAndButtonContainer,
@@ -5,7 +6,7 @@ import {
   NewCustomerButton,
 } from './styles'
 
-export function Customers() {
+export function InfoWithButtonNewCustomer() {
   return (
     <CustomerContainer>
       <LookAndButtonContainer>
@@ -13,7 +14,9 @@ export function Customers() {
           <h2>Listagem de usuários</h2>
           <span>Escolha um cliente para visualizar os detalhes</span>
         </LookTheCustomersContainer>
-        <NewCustomerButton>Novo cliente</NewCustomerButton>
+        <Link to="new-customer">
+          <NewCustomerButton>Novo cliente</NewCustomerButton>
+        </Link>
       </LookAndButtonContainer>
     </CustomerContainer>
   )
