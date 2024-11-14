@@ -16,7 +16,7 @@ function whatIsTheStatusColor(statusCadastro: string) {
   return 'green'
 }
 
-export function Form() {
+export function Home() {
   return (
     <>
       <TableContainer>

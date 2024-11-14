@@ -1,7 +1,7 @@
 import { Header } from './components/Header'
 import { Main } from './components/Main'
 import { PainelClientes } from './components/Painel-Clientes'
-import { Form } from './components/Table'
+import { Home } from './pages/Home'
 import { Customers } from './pages/Customers'
 
 export function App() {
@@ -11,7 +11,7 @@ export function App() {
       <Main>
         <PainelClientes />
         <Customers />
-        <Form />
+        <Home />
       </Main>
     </>
   )
