@@ -31,5 +31,4 @@ export const GlobalStyle = createGlobalStyle`
     outline: none;
     box-shadow: 0 0 0 2px #fb923c;
   }
-
 `
