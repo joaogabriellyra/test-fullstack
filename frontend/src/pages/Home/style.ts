@@ -48,10 +48,10 @@ const colors = {
   snow: '#d1d5db',
 }
 
-interface statusIndicator {
-  statusColor: keyof typeof colors
+interface statusIndicatorProps {
+  $statusColor: keyof typeof colors
 }
-export const StatusIndicator = styled.span<statusIndicator>`
+export const StatusIndicator = styled.span<statusIndicatorProps>`
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -61,7 +61,7 @@ export const StatusIndicator = styled.span<statusIndicator>`
     width: 0.75rem;
     height: 0.75rem;
     border-radius: 9999px;
-    background: ${props => colors[props.statusColor]};
+    background: ${props => colors[props.$statusColor]};
   }
 `
 
