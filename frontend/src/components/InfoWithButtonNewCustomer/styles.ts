@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const CustomerContainer = styled.div`
+export const InfoWithButtonNewCustomerContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -9,6 +9,11 @@ export const CustomerContainer = styled.div`
 export const LookAndButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-right: 4rem;
+
+  a {
+    height: 2rem;
+  }
 `
 export const LookTheCustomersContainer = styled.div`
   display: flex;
@@ -27,12 +32,11 @@ export const NewCustomerButton = styled.button`
   background-color:#fb923c;
   border: none;
   padding: 0 1rem;
-  height: 32px;
+  height: 2rem;
   font-size: 0.875rem;
   color: #f4f4f5;
   border-radius: 8px;
   cursor: pointer;
-  margin-right: 2rem;
 
   &:hover {
     background-color: #ea580c;

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import {
-  CustomerContainer,
+  InfoWithButtonNewCustomerContainer,
   LookAndButtonContainer,
   LookTheCustomersContainer,
   NewCustomerButton,
@@ -8,16 +8,16 @@ import {
 
 export function InfoWithButtonNewCustomer() {
   return (
-    <CustomerContainer>
+    <InfoWithButtonNewCustomerContainer>
       <LookAndButtonContainer>
         <LookTheCustomersContainer>
           <h2>Listagem de usuários</h2>
           <span>Escolha um cliente para visualizar os detalhes</span>
         </LookTheCustomersContainer>
         <Link to="new-customer">
-          <NewCustomerButton>Novo cliente</NewCustomerButton>
+          <NewCustomerButton type="button">Novo cliente</NewCustomerButton>
         </Link>
       </LookAndButtonContainer>
-    </CustomerContainer>
+    </InfoWithButtonNewCustomerContainer>
   )
 }
