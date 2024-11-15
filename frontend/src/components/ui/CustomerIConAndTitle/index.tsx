@@ -1,8 +1,8 @@
 import { User } from '@phosphor-icons/react'
 import { PainelClientesContainer } from './styles'
-import { Separator } from '../Separator'
+import { Separator } from '../../Separator'
 
-export function PainelClientes() {
+export function CustomerIconAndTitle() {
   return (
     <>
       <PainelClientesContainer>

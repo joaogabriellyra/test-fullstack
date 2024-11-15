@@ -1,42 +1,51 @@
 import { Controller, useFormContext } from 'react-hook-form'
 import {
-  type CreateCustomerForm,
   formatCPF,
   formatPhoneNumber,
+  type CreateCustomerForm,
 } from '../../validationsForm'
 import {
   BackLinkButton,
-  CreateButton,
   ButtonsContainer,
+  EditCustomerPageContainer,
+  ErrorMessage,
   Form,
   InfoContainer,
   Input,
-  NewCustomerPageContainer,
   Select,
-  ErrorMessage,
+  UpdateButton,
 } from './styles'
 import { WarningCircle } from '@phosphor-icons/react'
 
-export function NewCustomerPage() {
-  const { register, formState, control, handleSubmit, reset } =
+export function EditCustomerPage() {
+  const user = {
+    name: 'João Silva',
+    email: 'joao@email.com',
+    cpf: '12345678900',
+    cellphone: '81998711311',
+    status: 'inativo',
+  }
+
+  const { register, formState, control, handleSubmit } =
     useFormContext<CreateCustomerForm>()
 
-  function handleCreateCustomer(data: CreateCustomerForm) {
+  function handleEditCustomer(data: CreateCustomerForm) {
     console.log(data)
-    reset()
   }
 
   return (
-    <NewCustomerPageContainer>
+    <EditCustomerPageContainer>
       <InfoContainer>
-        <h3>Novo cliente</h3>
-        <span>Informe os campos a seguir para criar um novo cliente:</span>
+        <h3>Alterar dados do cliente</h3>
+        <span>
+          Edite os campos a seguir para atualizar as informações do cliente:
+        </span>
       </InfoContainer>
-      <Form onSubmit={handleSubmit(handleCreateCustomer)}>
+      <Form onSubmit={handleSubmit(handleEditCustomer)}>
         <Input
           type="text"
-          placeholder="Nome: Linus Torvalds"
           {...register('name')}
+          placeholder={`Nome: ${user.name}`}
           $hasError={formState.errors.name?.message}
         />
         {formState.errors.name && (
@@ -46,8 +55,8 @@ export function NewCustomerPage() {
         )}
         <Input
           type="email"
-          placeholder="E-mail: linux@email.com"
           {...register('email')}
+          placeholder={`E-mail: ${user.email}`}
           $hasError={formState.errors.email?.message}
         />
         {formState.errors.email && (
@@ -61,13 +70,13 @@ export function NewCustomerPage() {
           render={({ field: { onChange, value } }) => {
             return (
               <Input
-                placeholder="CPF: 000.000.000-00"
                 {...register('cpf')}
                 value={value}
                 onChange={e => {
                   const { value } = e.target
                   onChange(formatCPF(value))
                 }}
+                placeholder={`CPF: ${user.cpf}`}
                 $hasError={formState.errors.cpf?.message}
               />
             )
@@ -84,7 +93,7 @@ export function NewCustomerPage() {
           render={({ field: { onChange, value } }) => {
             return (
               <Input
-                placeholder="Telefone: (11) 99999-9999"
+                placeholder={`Telefone: ${user.cellphone}`}
                 {...register('cellphone')}
                 value={value}
                 onChange={e => {
@@ -119,10 +128,10 @@ export function NewCustomerPage() {
           </ErrorMessage>
         )}
         <ButtonsContainer>
-          <CreateButton type="submit">Criar</CreateButton>
+          <UpdateButton type="submit">Atualizar</UpdateButton>
           <BackLinkButton to="/">Voltar</BackLinkButton>
         </ButtonsContainer>
       </Form>
-    </NewCustomerPageContainer>
+    </EditCustomerPageContainer>
   )
 }

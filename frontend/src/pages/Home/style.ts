@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const TableContainer = styled.div`
@@ -65,17 +66,25 @@ export const StatusIndicator = styled.span<statusIndicatorProps>`
   }
 `
 
-export const EditButton = styled.button`
+export const EditLinkButton = styled(Link)`
   padding: 0.5rem 2rem;
   cursor: pointer;
   border: 1px solid #fb923c;
   color: #fb923c;
   font-weight: bold;
   margin-left: 2rem;
+  text-decoration: none;
 
   &&:hover {
     background-color: #fb923c;
     color: white;
   }
 
+`
+export const ShowingCustomersParagraph = styled.p`
+  span {
+    color: #27272a;
+    font-weight: bold;
+    font-size: 1.125rem;
+  }
 `

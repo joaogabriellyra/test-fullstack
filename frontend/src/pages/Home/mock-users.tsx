@@ -27,4 +27,32 @@ export const usuarios = [
     celular: '(31) 96666-6666',
     statusCadastro: 'Desativado',
   },
+  {
+    nome: 'Ana Costa',
+    email: 'ana@email.com',
+    cpf: '456.123.789-00',
+    celular: '(31) 96666-6666',
+    statusCadastro: 'Desativado',
+  },
+  {
+    nome: 'Ana Costa',
+    email: 'ana@email.com',
+    cpf: '456.123.789-00',
+    celular: '(31) 96666-6666',
+    statusCadastro: 'Desativado',
+  },
+  {
+    nome: 'Ana Costa',
+    email: 'ana@email.com',
+    cpf: '456.123.789-00',
+    celular: '(31) 96666-6666',
+    statusCadastro: 'Desativado',
+  },
+  {
+    nome: 'Ana Costa',
+    email: 'ana@email.com',
+    cpf: '456.123.789-00',
+    celular: '(31) 96666-6666',
+    statusCadastro: 'Desativado',
+  },
 ]

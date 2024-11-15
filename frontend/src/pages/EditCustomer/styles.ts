@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const NewCustomerPageContainer = styled.div`
+export const EditCustomerPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -63,12 +63,12 @@ export const ButtonsContainer = styled.div`
   margin-top: 2rem;
 `
 
-export const CreateButton = styled.button`
+export const UpdateButton = styled.button`
   background-color: #fb923c;
   color: #f4f4f5;
   border: 1px solid transparent;
   font-weight: bold;
-  padding: 0.5rem 3rem;
+  padding: 0.5rem 2rem;
   cursor: pointer;
 
 
