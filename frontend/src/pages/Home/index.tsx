@@ -2,8 +2,9 @@ import { InfoWithButtonNewCustomer } from '../../components/InfoWithButtonNewCus
 import { usuarios } from './mock-users'
 import {
   CpfAndCellphoneContainer,
-  EditButton,
+  EditLinkButton,
   NameAndEmailContainer,
+  ShowingCustomersParagraph,
   StatusIndicator,
   Table,
   TableContainer,
@@ -46,7 +47,9 @@ export function Home() {
                     </StatusIndicator>
                   </td>
                   <td>
-                    <EditButton>Editar</EditButton>
+                    <EditLinkButton to={`edit-customer/${cpf}`}>
+                      Editar
+                    </EditLinkButton>
                   </td>
                 </tr>
               )
@@ -54,7 +57,9 @@ export function Home() {
           </tbody>
         </Table>
       </TableContainer>
-      <span>Exibindo {usuarios.length} clientes</span>
+      <ShowingCustomersParagraph>
+        Exibindo <span>{usuarios.length} </span>clientes
+      </ShowingCustomersParagraph>
     </>
   )
 }

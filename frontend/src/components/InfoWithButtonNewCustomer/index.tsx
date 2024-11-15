@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom'
 import {
   InfoWithButtonNewCustomerContainer,
   LookAndButtonContainer,
   LookTheCustomersContainer,
-  NewCustomerButton,
+  NewCustomerLinkButton,
 } from './styles'
 
 export function InfoWithButtonNewCustomer() {
@@ -11,12 +10,13 @@ export function InfoWithButtonNewCustomer() {
     <InfoWithButtonNewCustomerContainer>
       <LookAndButtonContainer>
         <LookTheCustomersContainer>
-          <h2>Listagem de usuários</h2>
+          <h2>Listagem de clientes</h2>
           <span>Escolha um cliente para visualizar os detalhes</span>
         </LookTheCustomersContainer>
-        <Link to="new-customer">
-          <NewCustomerButton type="button">Novo cliente</NewCustomerButton>
-        </Link>
+
+        <NewCustomerLinkButton to="/new-customer">
+          Novo cliente
+        </NewCustomerLinkButton>
       </LookAndButtonContainer>
     </InfoWithButtonNewCustomerContainer>
   )
