@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rgffhcqszhuznlfhet6l2zlu",
+    "name": "João Silva",
+    "email": "joao@email.com",
+    "cellphone": "11999999999",
+    "cpf": "12345678900",
+    "status": "Ativo"
+  },
+  {
+    "id": "iabdxwu0vxyplec7j9phjcb9",
+    "name": "Maria Souza",
+    "email": "maria@email.com",
+    "cellphone": "11988888888",
+    "cpf": "98765432100",
+    "status": "Inativo"
+  },
+  {
+    "id": "gzx7rcg3f1ekuf4203wswkho",
+    "name": "Carlos Pereira",
+    "email": "carlos@email.com",
+    "cellphone": "11977777777",
+    "cpf": "12345678900",
+    "status": "Desativado"
+  },
+  {
+    "id": "r9bildfmksa5x65cif73n6vl",
+    "name": "Ana Costa",
+    "email": "ana@email.com",
+    "cellphone": "11999999999",
+    "cpf": "12345678900",
+    "status": "Aguardando ativação"
+  },
+  {
+    "id": "ebmbuucaeaqzdbamb93v3svj",
+    "name": "Carlos Eduardo",
+    "email": "carlinhoslyra2009@hotmail.com",
+    "cellphone": "81997305897",
+    "cpf": "12413540490",
+    "status": "Ativo"
+  },
+  {
+    "id": "xe05f0ufld7zpbsheal3mudl",
+    "name": "Gabriel Toledo",
+    "email": "FalleN@email.com",
+    "cellphone": "81996780154",
+    "cpf": "32154636526",
+    "status": "Ativo"
+  }
+]
