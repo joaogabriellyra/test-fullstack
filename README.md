@@ -32,7 +32,7 @@ Adote boas práticas de desenvolvimento e arquitetura.
 - Bibliotecas ou frameworks adicionais
 
 ## Telas:
-
+ 
 - [Tela Inicial](https://test-frontend-uolpp.web.app/assets/images/tela-inicial.jpg)
 - [Tela de Edição](https://test-frontend-uolpp.web.app/assets/images/tela-edicao.jpg)
 
