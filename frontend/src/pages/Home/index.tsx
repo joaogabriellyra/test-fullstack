@@ -1,5 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
 import { InfoWithButtonNewCustomer } from '../../components/InfoWithButtonNewCustomer'
-import { usuarios } from './mock-users'
+import { getCustomers } from '../../http/get-customers'
 import {
   CpfAndCellphoneContainer,
   EditLinkButton,
@@ -19,35 +20,41 @@ function whatIsTheStatusColor(statusCadastro: string) {
 }
 
 export function Home() {
+  const { data } = useQuery({
+    queryKey: ['customers'],
+    queryFn: getCustomers,
+    staleTime: 1000 * 60,
+  })
+
   return (
     <>
       <InfoWithButtonNewCustomer />
       <TableContainer>
         <Table>
           <tbody>
-            {usuarios.map(({ celular, cpf, email, nome, statusCadastro }) => {
-              const statusIndicatorColor = whatIsTheStatusColor(statusCadastro)
+            {data?.map(({ name, cellphone, cpf, email, id, status }) => {
+              const statusIndicatorColor = whatIsTheStatusColor(status)
               return (
-                <tr key={cpf}>
+                <tr key={id}>
                   <td>
                     <NameAndEmailContainer>
-                      <h3>{nome}</h3>
+                      <h3>{name}</h3>
                       <span>{email}</span>
                     </NameAndEmailContainer>
                   </td>
                   <td>
                     <CpfAndCellphoneContainer>
                       <span>{cpf}</span>
-                      <span>{celular}</span>
+                      <span>{cellphone}</span>
                     </CpfAndCellphoneContainer>
                   </td>
                   <td>
                     <StatusIndicator $statusColor={statusIndicatorColor}>
-                      {statusCadastro}
+                      {status}
                     </StatusIndicator>
                   </td>
                   <td>
-                    <EditLinkButton to={`edit-customer/${cpf}`}>
+                    <EditLinkButton to={`edit-customer/${id}`}>
                       Editar
                     </EditLinkButton>
                   </td>
@@ -58,7 +65,7 @@ export function Home() {
         </Table>
       </TableContainer>
       <ShowingCustomersParagraph>
-        Exibindo <span>{usuarios.length} </span>clientes
+        Exibindo <span>{data?.length} </span>clientes
       </ShowingCustomersParagraph>
     </>
   )
