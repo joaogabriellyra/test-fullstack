@@ -16,14 +16,19 @@ import {
   ErrorMessage,
 } from './styles'
 import { WarningCircle } from '@phosphor-icons/react'
+import { createCustomer } from '../../http/create-customer'
+import { useQueryClient } from '@tanstack/react-query'
 
 export function NewCustomerPage() {
+  const queryClient = useQueryClient()
+
   const { register, formState, control, handleSubmit, reset } =
     useFormContext<CreateCustomerForm>()
 
-  function handleCreateCustomer(data: CreateCustomerForm) {
-    console.log(data)
+  async function handleCreateCustomer(data: CreateCustomerForm) {
+    await createCustomer(data)
     reset()
+    queryClient.invalidateQueries({ queryKey: ['customer'] })
   }
 
   return (
@@ -103,14 +108,14 @@ export function NewCustomerPage() {
         )}
         <Select
           {...register('status')}
-          defaultValue="status"
+          defaultValue="Status"
           $hasError={formState.errors.status?.message}
         >
-          <option value="status">Status</option>
-          <option value="ativo">Ativo</option>
-          <option value="inativo">Inativo</option>
-          <option value="desativado">Desativado</option>
-          <option value="aguardando ativação">Aguardando ativação</option>
+          <option value="Status">Status</option>
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+          <option value="Desativado">Desativado</option>
+          <option value="Aguardando ativação">Aguardando ativação</option>
         </Select>
         {formState.errors.status && (
           <ErrorMessage>

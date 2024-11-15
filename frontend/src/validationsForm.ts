@@ -29,7 +29,7 @@ export const createCustomerForm = z.strictObject({
       return !(replacedDoc.length > 11 || replacedDoc.length < 11)
     }, 'Telefone deve conter DDD + Número.')
     .transform(value => value.replace(/\D/g, '')),
-  status: z.enum(['ativo', 'inativo', 'desativado', 'aguardando ativação']),
+  status: z.enum(['Ativo', 'Inativo', 'Desativado', 'Aguardando ativação']),
 })
 
 export type CreateCustomerForm = z.infer<typeof createCustomerForm>

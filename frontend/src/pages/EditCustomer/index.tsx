@@ -16,21 +16,44 @@ import {
   UpdateButton,
 } from './styles'
 import { WarningCircle } from '@phosphor-icons/react'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { getCustomers } from '../../http/get-customers'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { updateCustomer } from '../../http/update-customer'
 
 export function EditCustomerPage() {
-  const user = {
-    name: 'João Silva',
-    email: 'joao@email.com',
-    cpf: '12345678900',
-    cellphone: '81998711311',
-    status: 'inativo',
-  }
+  const queryClient = useQueryClient()
+  const [customerWhoWillBeEdited, setCustomerWhoWillBeEdited] = useState({
+    name: '',
+    email: '',
+    cellphone: '',
+    status: 'Status',
+    cpf: '',
+  })
+  const { id } = useParams()
 
-  const { register, formState, control, handleSubmit } =
+  const { data } = useQuery({
+    queryKey: ['customers'],
+    queryFn: getCustomers,
+    staleTime: 1000 * 60,
+  })
+
+  useEffect(() => {
+    const customerWhoWillBeEdited = data?.find(customer => customer.id === id)
+    if (customerWhoWillBeEdited) {
+      setCustomerWhoWillBeEdited(customerWhoWillBeEdited)
+    }
+  }, [id, data])
+  const { register, formState, control, handleSubmit, reset } =
     useFormContext<CreateCustomerForm>()
 
   function handleEditCustomer(data: CreateCustomerForm) {
-    console.log(data)
+    if (id) {
+      updateCustomer(id, data)
+      reset()
+      queryClient.invalidateQueries({ queryKey: ['customer'] })
+    }
   }
 
   return (
@@ -45,7 +68,7 @@ export function EditCustomerPage() {
         <Input
           type="text"
           {...register('name')}
-          placeholder={`Nome: ${user.name}`}
+          placeholder={`Nome: ${customerWhoWillBeEdited.name}`}
           $hasError={formState.errors.name?.message}
         />
         {formState.errors.name && (
@@ -56,7 +79,7 @@ export function EditCustomerPage() {
         <Input
           type="email"
           {...register('email')}
-          placeholder={`E-mail: ${user.email}`}
+          placeholder={`E-mail: ${customerWhoWillBeEdited.email}`}
           $hasError={formState.errors.email?.message}
         />
         {formState.errors.email && (
@@ -76,7 +99,7 @@ export function EditCustomerPage() {
                   const { value } = e.target
                   onChange(formatCPF(value))
                 }}
-                placeholder={`CPF: ${user.cpf}`}
+                placeholder={`CPF: ${customerWhoWillBeEdited.cpf}`}
                 $hasError={formState.errors.cpf?.message}
               />
             )
@@ -93,7 +116,7 @@ export function EditCustomerPage() {
           render={({ field: { onChange, value } }) => {
             return (
               <Input
-                placeholder={`Telefone: ${user.cellphone}`}
+                placeholder={`Telefone: ${customerWhoWillBeEdited.cellphone}`}
                 {...register('cellphone')}
                 value={value}
                 onChange={e => {
@@ -112,14 +135,14 @@ export function EditCustomerPage() {
         )}
         <Select
           {...register('status')}
-          defaultValue="status"
+          defaultValue={customerWhoWillBeEdited.status}
           $hasError={formState.errors.status?.message}
         >
-          <option value="status">Status</option>
-          <option value="ativo">Ativo</option>
-          <option value="inativo">Inativo</option>
-          <option value="desativado">Desativado</option>
-          <option value="aguardando ativação">Aguardando ativação</option>
+          <option value="Status">Status</option>
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+          <option value="Desativado">Desativado</option>
+          <option value="Aguardando ativação">Aguardando ativação</option>
         </Select>
         {formState.errors.status && (
           <ErrorMessage>
