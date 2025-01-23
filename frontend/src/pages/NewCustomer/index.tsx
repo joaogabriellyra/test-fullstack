@@ -18,29 +18,44 @@ import {
 import { WarningCircle } from '@phosphor-icons/react'
 import { createCustomer } from '../../http/create-customer'
 import { useQueryClient } from '@tanstack/react-query'
+import { useEffect, useState } from 'react'
 
 export function NewCustomerPage() {
   const queryClient = useQueryClient()
-
+  const [successMessage, setSuccessMessage] = useState('')
   const { register, formState, control, handleSubmit, reset } =
     useFormContext<CreateCustomerForm>()
 
   async function handleCreateCustomer(data: CreateCustomerForm) {
     await createCustomer(data)
     reset()
-    queryClient.invalidateQueries({ queryKey: ['customer'] })
+    queryClient.invalidateQueries({ queryKey: ['customers'] })
+
+    setSuccessMessage('Cadastro efetuado com sucesso!')
+    setTimeout(() => setSuccessMessage(''), 3000)
   }
+
+  useEffect(() => {
+    reset({
+      name: '',
+      email: '',
+      cellphone: '',
+      status: 'Inativo',
+      cpf: '',
+    })
+  }, [reset])
 
   return (
     <NewCustomerPageContainer>
       <InfoContainer>
         <h3>Novo cliente</h3>
         <span>Informe os campos a seguir para criar um novo cliente:</span>
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
       </InfoContainer>
       <Form onSubmit={handleSubmit(handleCreateCustomer)}>
         <Input
           type="text"
-          placeholder="Nome: Linus Torvalds"
+          placeholder="Linus Torvalds"
           {...register('name')}
           $hasError={formState.errors.name?.message}
         />
@@ -51,7 +66,7 @@ export function NewCustomerPage() {
         )}
         <Input
           type="email"
-          placeholder="E-mail: linux@email.com"
+          placeholder="linux@email.com"
           {...register('email')}
           $hasError={formState.errors.email?.message}
         />
@@ -66,7 +81,7 @@ export function NewCustomerPage() {
           render={({ field: { onChange, value } }) => {
             return (
               <Input
-                placeholder="CPF: 000.000.000-00"
+                placeholder="000.000.000-00"
                 {...register('cpf')}
                 value={value}
                 onChange={e => {
@@ -89,7 +104,7 @@ export function NewCustomerPage() {
           render={({ field: { onChange, value } }) => {
             return (
               <Input
-                placeholder="Telefone: (11) 99999-9999"
+                placeholder="(11) 99999-9999"
                 {...register('cellphone')}
                 value={value}
                 onChange={e => {

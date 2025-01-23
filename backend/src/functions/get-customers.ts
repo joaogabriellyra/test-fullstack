@@ -8,6 +8,7 @@ interface getCustomersRequest {
   cellphone: string
   cpf: string
   status: 'Ativo' | 'Inativo' | 'Desativado' | 'Aguardando ativação'
+  createdAt?: Date
 }
 export async function getCustomers(): Promise<getCustomersRequest[]> {
   return await db
@@ -18,6 +19,7 @@ export async function getCustomers(): Promise<getCustomersRequest[]> {
       cellphone: customers.cellphone,
       cpf: customers.cpf,
       status: customers.status,
+      createdAt: customers.createdAt,
     })
     .from(customers)
 }
